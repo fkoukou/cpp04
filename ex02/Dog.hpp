@@ -7,10 +7,11 @@
 #include"Brain.hpp"
 
 
+
 class Dog : public Animal
 {
     private:
-        Brain brain;
+        Brain *brain;
     public:
     Dog();
     Dog(const std::string name);
@@ -19,11 +20,9 @@ class Dog : public Animal
 
     ~Dog();
     void    setIdea(int index, const std::string& idea);
-    std::string getIdesetIdeaa(int index) const;       
+    std::string getIdesetIdeaa(int index) const;
+     void makeSound() const;
 
-    
-    virtual void makeSound();
-
-};         
+};
 
 #endif

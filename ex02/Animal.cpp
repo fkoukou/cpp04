@@ -4,12 +4,6 @@ Animal::Animal()
 {
     this->type = "Animal";
 }
-Animal:: Animal(const std::string& type)
-{
-    this->type = type;
-}
-
-
 Animal:: Animal(const Animal& other)
 {
     this->type = other.type;
@@ -29,12 +23,8 @@ Animal::~Animal()
     std::cout << "destroy" << std::endl;
 }
 
-void Animal::makeSound()
-{
-    std::cout << "Animal sound" << std::endl;
-}
 
-std::string Animal::getType() const
+std::string Animal::getType()
 {
     return type;
 }

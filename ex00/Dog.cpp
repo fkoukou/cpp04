@@ -1,18 +1,9 @@
 #include"Dog.hpp"
-Dog::Dog() : Animal("Dog")
+Dog::Dog() : Animal()
 {
+    this->type = "Dog";
+    std::cout << "Dog constructed" << std::endl;
 }
-
-Dog::Dog(const std::string name) : Animal(name)
-{
-}
-
-
-Dog::Dog(const Dog &other)
-{
-    this->type = other.type;
-}
-
 Dog& Dog::operator=(const Dog &other)
 {
     if(this != &other)

@@ -1,24 +1,29 @@
 #include"Dog.hpp"
 #include"Brain.hpp"
-Dog::Dog() : Animal("Dog")
-{
-}
-
-Dog::Dog(const std::string name) : Animal(name)
-{
-}
 
 
-Dog::Dog(const Dog &other)
+Dog::Dog():Animal()
 {
-    this->type = other.type;
+    std::cout << "Dog default constructor called" << std::endl;
+    brain = new Brain();
+    this->type = "Dog";
 }
+
+
+Dog::Dog(const Dog &other):Animal(other)
+{
+    std::cout << "Dog copy constructor called" << std::endl;
+    brain = new Brain(*other.brain);
+}
+
 
 Dog& Dog::operator=(const Dog &other)
 {
-    if(this != &other)
+    std::cout << "Dog copy assignment operator called" << std::endl;
+    if (this != &other)
     {
-            this->type = other.type;
+        Animal::operator=(other);
+        *brain = *other.brain;
     }
     return *this;
 }
@@ -26,20 +31,22 @@ Dog& Dog::operator=(const Dog &other)
 
 Dog::~Dog()
 {
-    std::cout << "Dog destroyed" << std::endl;
+    std::cout << "Dog destructor called" << std::endl;
+    delete brain;
 }
 
-
-void Dog::makeSound() 
+void Dog::setIdea(int index, const std::string& idea)
 {
-    std::cout << "Woof Woof" << std::endl;
+    brain->setIdea(index, idea);
 }
 
-void Dog::setIdea(int index, const std::string& idea) {
-    brain.setIdea(index, idea);
+std::string Dog::getIdesetIdeaa(int index) const
+{
+    return brain->getIdesetIdeaa(index);
 }
 
-std::string Dog::getIdesetIdeaa(int index) const {
-    return brain.getIdesetIdeaa(index);
+void Dog::makeSound() const
+{
+    std::cout << "Woof Woof!" << std::endl;
 }
 

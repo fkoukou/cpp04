@@ -3,16 +3,12 @@
 Animal::Animal()
 {
     this->type = "Animal";
+    std::cout << "construct Animal" << std::endl;
 }
-Animal:: Animal(const std::string& type)
-{
-    this->type = type;
-}
-
-
 Animal:: Animal(const Animal& other)
 {
     this->type = other.type;
+    std::cout << "copy construct Animal" << std::endl;
 }
 
 Animal& Animal::operator=(const Animal &other)
@@ -21,6 +17,7 @@ Animal& Animal::operator=(const Animal &other)
     {
         this->type = other.type;
     }
+    std::cout << "assign Animal" << std::endl;
     return *this;
 }
 
